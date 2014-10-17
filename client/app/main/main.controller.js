@@ -1,22 +1,41 @@
-'use strict';
+;(function(){
+  'use strict';
 
-angular.module('onyxLightningApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
+  angular
+    .module('onyxLightningApp')
+    .controller('MainCtrl', MainCtrl);
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+  MainCtrl.$inject = ['ResolvedThings', '$scope', 'MainFactory'];
+
+  function MainCtrl(ResolvedThings, $scope, MainFactory) {
+    // console.log(ResolvedThings)
+
+    var vm = this;
+    vm.awesomeThings = ResolvedThings;
+    vm.main = MainFactory;
+    vm.remove = remove;
+
+    ////////////////////
+
+    function addThing() {
+      if(vm.newThing === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
+      vm.newThing = '';
+    }
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-  });
+    function remove(id) {
+      vm.main.remove(id)
+        .then(function(){
+
+          var index = _.indexOf(vm.awesomeThings, {_id: id})
+          vm.awesomeThings.splice(index, 1);
+
+        })
+    }
+    console.log(this)
+    console.log($scope)
+  }
+
+}).call(this);
