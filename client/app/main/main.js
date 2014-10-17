@@ -5,7 +5,15 @@ angular.module('onyxLightningApp')
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'app/main/main.html',
+        views: {
+          '': {
+            templateUrl: 'app/main/main.html'
+          },
+          'map@main': {
+            templateUrl: 'app/map/map.html',
+            controller: 'MapCtrl'
+          }
+        },
         controller: 'MainCtrl as vm',
         resolve: {
           ResolvedThings: ResolvedThings
@@ -17,7 +25,6 @@ angular.module('onyxLightningApp')
       function ResolvedThings(MainFactory){
         return MainFactory.get()
           .then(function (response){
-            console.log(response)
               return response.data;
           });
       }
