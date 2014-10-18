@@ -7,3 +7,4 @@ dist
 /server/config/local.env.js
 client/.DS_Store
 client/app/.DS_Store
+.DS_Store
