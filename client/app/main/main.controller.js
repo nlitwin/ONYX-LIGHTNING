@@ -34,8 +34,6 @@
 
         })
     }
-    console.log(this)
-    console.log($scope)
   }
 
 }).call(this);
