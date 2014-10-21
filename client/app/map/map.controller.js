@@ -5,6 +5,12 @@
   angular
     .module('onyxLightningApp')
     .controller('MapCtrl', function(){
+
+        /* 
+         * d3 logic inserts map into <div id="map">
+         * TODO: move d3 logic into separate file
+         */
+
         d3.select(window).on("resize", throttle);
 
         var zoom = d3.behavior.zoom()
