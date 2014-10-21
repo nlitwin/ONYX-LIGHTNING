@@ -7,11 +7,15 @@ var feedparser = new FeedParser();
 
 req.on('error', function (error) {
   // handle any request errors
+  console.log(error);
 });
+
 req.on('response', function (res) {
   var stream = this;
 
-  if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+  if (res.statusCode != 200) {
+    return this.emit('error', new Error('Bad status code'));
+  }
 
   stream.pipe(feedparser);
 });
@@ -19,23 +23,25 @@ req.on('response', function (res) {
 
 feedparser.on('error', function(error) {
   // always handle errors
+  console.log(error);
 });
 feedparser.on('readable', function() {
   // This is where the action is!
-  var stream = this
-    , meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
-    , item;
+  var stream = this, 
+  // **NOTE** the "meta" is always available in the context of the feedparser instance
+  meta = this.meta,
+  item;
 
   while (item = stream.read()) {
     var newItem = {};
-    newItem.title=item.title;
-    newItem.location='Paraguay';
-    newItem.info= item.summary;
-    newItem.url=item.link;
+    newItem.title = item.title;
+    newItem.location = 'Paraguay';
+    newItem.info = item.summary;
+    newItem.url = item.link;
     console.log(newItem);
-     console.log(item.title, '----');
-   //  console.log(JSON.parse(item.title))
-     //db.create(JSON.parse(item.title));
+    console.log(item.title, '----');
+    // console.log(JSON.parse(item.title))
+    // db.create(JSON.parse(item.title));
   }
 });
 

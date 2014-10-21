@@ -12,6 +12,10 @@ angular.module('onyxLightningApp')
           'map@main': {
             templateUrl: 'app/map/map.html',
             controller: 'MapCtrl'
+          },
+          'featuredArticle@main': {
+            templateUrl: 'app/featuredArticle/featuredArticle.html',
+            controller: 'FeaturedArticleCtrl'
           }
         },
         controller: 'MainCtrl as vm',
