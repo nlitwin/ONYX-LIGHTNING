@@ -1,31 +1,14 @@
-'use strict';
+// Delete me or move main.js/featuredArticle logic here?
+
+/*'use strict';
 
 angular.module('onyxLightningApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('main', {
+      .state('featuredArticle', {
         url: '/',
-        views: {
-          '': {
-            templateUrl: 'app/main/main.html'
-          },
-          'map@main': {
-            templateUrl: 'app/map/map.html',
-            controller: 'MapCtrl'
-          }
-        },
-        controller: 'MainCtrl as vm',
-        resolve: {
-          ResolvedThings: ResolvedThings
-        }
+        templateUrl: 'app/featuredArticle/featuredArticle.html',
+        controller: 'FeaturedArticleCtrl'
       });
-
-      //////////////
-
-      function ResolvedThings(MainFactory){
-        return MainFactory.get()
-          .then(function (response){
-              return response.data;
-          });
-      }
   });
+*/
