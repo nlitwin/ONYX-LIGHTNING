@@ -12,6 +12,28 @@ var parser = require('../../parseRSS')
 var _ = require('lodash');
 var Thing = require('./thing.model');
 
+
+// Fill Database with Yahoo data
+parser.fetchArticles('yahoo', function(newArticle) {
+
+});
+
+// Add Articles to the Database
+// This is a Callback for the fetchArticles Function in parseRSS.js
+
+exports.createArticle = function(newArticle) {
+  Thing.create(newArticle, function(err, article){
+    if (err) {
+      // console.log(err)
+      ;
+    } else {
+      // console.log(newArticle);
+      ;
+    }
+  });
+}
+
+
 // Get list of things
 exports.index = function(req, res) {
   console.log('controller index')

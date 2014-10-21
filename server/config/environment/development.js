@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/onyxlightning-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };
