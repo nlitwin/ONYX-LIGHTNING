@@ -16,7 +16,7 @@ ONYX-LIGHTNING
 
 - Node 0.10.x
 - MongoDB
-- Bower
+- bower
 - grunt-cli
 
 ## Development
@@ -42,7 +42,7 @@ View the project roadmap [here](https://github.com/ONYX-LIGHTNING/ONYX-LIGHTNING
 
   - __Product Owner__: Alejandro
   - __Scrum Master__: Greg
-  - __Development Team Members__: Japser, Nick
+  - __Development Team Members__: Jasper, Nick
 
 ## Contributing
 
