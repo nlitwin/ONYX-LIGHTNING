@@ -1,4 +1,8 @@
-'use strict';
+// Delete me or move main.js/map logic here?
+
+
+
+/*'use strict';
 
 angular.module('onyxLightningApp')
   .config(function ($stateProvider) {
@@ -9,3 +13,4 @@ angular.module('onyxLightningApp')
         controller: 'MapCtrl as vm'
       });
   });
+*/
