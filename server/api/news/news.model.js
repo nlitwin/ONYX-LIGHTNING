@@ -3,11 +3,14 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var ThingSchema = new Schema({
+var NewsSchema = new Schema({
   title: String,
   info: String,
   location: String,
-  url: String
+  url: {
+    type: String,
+    unique: true
+  }
 });
 
-module.exports = mongoose.model('Thing', ThingSchema);
+module.exports = mongoose.model('News', NewsSchema);

@@ -18,13 +18,13 @@
     ////////////////////
 
     function get(){
-      return $http.get('/api/things');
+      return $http.get('/api/news');
     }
     function create(thing){
-      return $http.post('/api/things', { name: $scope.newThing });
+      return $http.post('/api/news', { name: $scope.newThing });
     }
     function remove(id) {
-      return $http.delete('/api/things/' + id);
+      return $http.delete('/api/news/' + id);
     }
   }
 
