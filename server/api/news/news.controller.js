@@ -8,7 +8,7 @@
  */
 
 'use strict';
-var parser = require('../../parseRSS.js');
+var newsAggregator = require('./../../components/news_aggregator/news.aggregator.js');
 var _ = require('lodash');
 var News = require('./news.model.js');
 
@@ -21,7 +21,7 @@ module.exports = {
 
 // Fill Database with Yahoo data
 
-parser.fetchArticles(module.exports.createArticle);
+newsAggregator.fetchArticles(createArticle);
 
 // ############ Functions: ###################
 
@@ -43,9 +43,7 @@ function createArticle(newArticle) {
 
 // Get list of things
 function index(req, res) {
-  console.log('controller index')
   News.find(function (err, news) {
-    console.log('found', news)
     if(err) { return handleError(res, err); }
     return res.json(200, news);
   });

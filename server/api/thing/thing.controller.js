@@ -8,20 +8,32 @@
  */
 
 'use strict';
-var parser = require('../../parseRSS')
+var parser = require('../../parseRSS');
 var _ = require('lodash');
 var Thing = require('./thing.model');
+console.log('thing.controller.js : 14');
+
+module.exports = {
+  createArticle: createArticle,
+  index: index,
+  show: show,
+  create: create,
+  update: update,
+  destroy: destroy
+};
+
 
 
 // Fill Database with Yahoo data
-parser.fetchArticles('yahoo', function(newArticle) {
+// parser.fetchArticles(module.exports.createArticle);
 
-});
 
-// Add Articles to the Database
-// This is a Callback for the fetchArticles Function in parseRSS.js
 
-exports.createArticle = function(newArticle) {
+
+// Create Unique article in DB (uniqueness is determined by the url)
+// This function is meant to be a callback for fetchArticles() in parseRSS.js
+function createArticle (newArticle) {
+  console.log('THINGS ####### createArticle')
   Thing.create(newArticle, function(err, article){
     if (err) {
       // console.log(err)
@@ -35,19 +47,17 @@ exports.createArticle = function(newArticle) {
 
 
 // Get list of things
-exports.index = function(req, res) {
-  console.log('controller index')
+function index(req, res) {
+  // console.log('controller index')
   Thing.find(function (err, things) {
-    console.log('found', things)
+    // console.log('found', things)
     if(err) { return handleError(res, err); }
     return res.json(200, things);
   });
 };
 
-exports.refreshDatabase = function(req,res){
-}
 // Get a single thing
-exports.show = function(req, res) {
+function show(req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
     if(!thing) { return res.send(404); }
@@ -56,7 +66,7 @@ exports.show = function(req, res) {
 };
 
 // Creates a new thing in the DB.
-exports.create = function(req, res) {
+function create(req, res) {
   Thing.create(req.body, function(err, thing) {
     console.log('creating new')
     if(err) { return handleError(res, err); }
@@ -65,7 +75,7 @@ exports.create = function(req, res) {
 };
 
 // Updates an existing thing in the DB.
-exports.update = function(req, res) {
+function update (req, res) {
   if(req.body._id) { delete req.body._id; }
   Thing.findById(req.params.id, function (err, thing) {
     if (err) { return handleError(res, err); }
@@ -79,7 +89,7 @@ exports.update = function(req, res) {
 };
 
 // Deletes a thing from the DB.
-exports.destroy = function(req, res) {
+function destroy (req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
     if(!thing) { return res.send(404); }
