@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://MongoLab-h:gPeidJFDyXGX9Vg1uutUrYIbv7VAMeiEXfQfu0fCF10-@ds030607.mongolab.com:30607/MongoLab-h'
   },
 
-  seedDB: true
+  seedDB: false
 };
