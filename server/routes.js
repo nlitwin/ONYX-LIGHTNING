@@ -5,7 +5,6 @@
 'use strict';
 
 var errors = require('./components/errors');
-var thingRouter = require('./api/thing/index.js');
 var newsRouter = require('./api/news/index.js')
 var userRouter = require('./api/user/index.js');
 var authRouter = require('./auth/index.js');
@@ -14,7 +13,6 @@ module.exports = function(app) {
 
 
   // Insert routes below
-  app.use('/api/things', thingRouter);
   app.use('/api/users', userRouter);
   app.use('/api/news', newsRouter);
 

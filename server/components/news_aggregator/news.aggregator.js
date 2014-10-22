@@ -1,20 +1,9 @@
 var FeedParser = require('feedparser');
 var request = require('request');
-// var db = require('./api/thing/thing.controller');
-
-
-// var apiMap = {
-//   yahoo: {
-//     url: 'http://news.yahoo.com/rss/world/'
-//   }
-// };
-
 var apiMap = require('./news.source.config.js');
 var utils = require('./news.aggregator.utils.js');
 
 exports.fetchArticles = function(dbCallback) {
-  // console.log('parseRSS.js : 13');
-  // console.log('parseRSS.js : 14', dbCallback);
 
   for (var key in apiMap) {
     console.log(key);
@@ -22,7 +11,6 @@ exports.fetchArticles = function(dbCallback) {
   }
 
   function fetchSingleApi (api) {
-    console.log(api);
     var req = request(api.url);
     var feedparser = new FeedParser();
 
@@ -53,7 +41,6 @@ exports.fetchArticles = function(dbCallback) {
         newItem.location = utils.getLocation();
         newItem.info = item.summary;
         newItem.url = item.link;
-        // console.log(newItem.title);
         dbCallback(newItem);
       }
     });

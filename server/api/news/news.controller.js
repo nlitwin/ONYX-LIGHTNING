@@ -28,7 +28,6 @@ newsAggregator.fetchArticles(createArticle);
 // Create Unique article in DB (uniqueness is determined by the url)
 // This function is meant to be a callback for fetchArticles() in parseRSS.js
 function createArticle(newArticle) {
-  console.log('NEWS ####### createArticle')
   News.create(newArticle, function(err, article){
     if (err) {
       // console.log(err)
