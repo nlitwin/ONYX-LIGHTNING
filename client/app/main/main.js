@@ -4,17 +4,24 @@ angular.module('onyxLightningApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/:index',
+        url: '/',
         views: {
           '': {
             templateUrl: 'app/main/main.html'
           },
-          'map@main': {
+          'map': {
             templateUrl: 'app/map/map.html',
             controller: 'MapCtrl'
-          }
+          },
         },
         controller: 'MainCtrl'
-      });
+      })
+      .state('main.article', {
+        url: ':index',
+        templateUrl: 'app/featuredArticle/featuredArticle.html',
+        controller: 'ArticleCtrl'
+      })
+
+
 
   });

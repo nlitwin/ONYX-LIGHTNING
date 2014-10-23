@@ -9,10 +9,8 @@
   MainCtrl.$inject = ['$scope', 'MainFactory', '$stateParams'];
 
   function MainCtrl($scope, MainFactory, $stateParams) {
-    console.log($stateParams);
-
     $scope.index = $stateParams.index | 0;
-    console.log($scope.index);
+    $scope.expandedSwitch = false;
 
     MainFactory.get().
       success(function(data, status, headers, config) {
