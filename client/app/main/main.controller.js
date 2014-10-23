@@ -6,34 +6,23 @@
     .module('onyxLightningApp')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['ResolvedThings', '$scope', 'MainFactory'];
+  MainCtrl.$inject = ['$scope', 'MainFactory', '$stateParams'];
 
-  function MainCtrl(ResolvedThings, $scope, MainFactory) {
-    // console.log(ResolvedThings)
+  function MainCtrl($scope, MainFactory, $stateParams) {
+    $scope.index = $stateParams.index | 0;
+    $scope.expandedSwitch = false;
 
-    var vm = this;
-    vm.awesomeThings = ResolvedThings;
-    vm.main = MainFactory;
-    vm.remove = remove;
+    MainFactory.get().
+      success(function(data, status, headers, config) {
+        console.log(data);
+        $scope.news = data;
+      }).
+      error(function(data, status, headers, config) {
+        // console.log(data);
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
 
-    ////////////////////
-
-    function addThing() {
-      if(vm.newThing === '') {
-        return;
-      }
-      vm.newThing = '';
-    }
-
-    function remove(id) {
-      vm.main.remove(id)
-        .then(function(){
-
-          var index = _.indexOf(vm.awesomeThings, {_id: id})
-          vm.awesomeThings.splice(index, 1);
-
-        })
-    }
   }
 
 }).call(this);

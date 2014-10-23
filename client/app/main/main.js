@@ -9,27 +9,19 @@ angular.module('onyxLightningApp')
           '': {
             templateUrl: 'app/main/main.html'
           },
-          'map@main': {
+          'map': {
             templateUrl: 'app/map/map.html',
             controller: 'MapCtrl'
           },
-          'featuredArticle@main': {
-            templateUrl: 'app/featuredArticle/featuredArticle.html',
-            controller: 'FeaturedArticleCtrl'
-          }
         },
-        controller: 'MainCtrl as vm',
-        resolve: {
-          ResolvedThings: ResolvedThings
-        }
-      });
+        controller: 'MainCtrl'
+      })
+      .state('main.article', {
+        url: ':index',
+        templateUrl: 'app/featuredArticle/featuredArticle.html',
+        controller: 'ArticleCtrl'
+      })
 
-      //////////////
 
-      function ResolvedThings(MainFactory){
-        return MainFactory.get()
-          .then(function (response){
-              return response.data;
-          });
-      }
+
   });

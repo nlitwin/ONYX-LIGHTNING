@@ -3,7 +3,7 @@
 <div ui-view="map"></div>
 <div ui-view="featuredArticle"></div> -->
 
-<div class="site" ng-controller="MainCtrl">
+<div class="site">
 
 
   <header class="sidebar-header">
@@ -15,14 +15,10 @@
         </a>
       </div>
     </div>
-
-
-
-
     <div class="second">
-      <a class="expander" ng-class="{expanded: expandedSwitch}" ng-click="expandedSwitch = !expandedSwitch"title="Show menu">
+      <a class="expander" title="Show menu">
         <div class="expand">
-          <span class="icon" ></span>
+          <span class="icon"></span>
           "News Feed"
         </div>
         <div class="collapse">
@@ -30,13 +26,13 @@
           "Collapse"
         </div>
       </a>
-
-
-
-
-      <ul class="main-menu" ng-class="{expanded: expandedSwitch}">
-        <li class="menu-item" ng-repeat="article in news | limitTo: 15">
-          <a ui-sref=".article({index: $index})">{{article.title}}</a>
+      <ul class="main-menu">
+        <li class="menu-item">
+          <a href="#">LINK</a>
+          <a href="#">LINK</a>
+          <a href="#">LINK</a>
+          <a href="#">LINK</a>
+          <a href="#">LINK</a>
         </li>
       </ul>
     </div>
@@ -52,11 +48,11 @@
       </div>
       <!-- <div ui-view="map"></div> -->
       <div class="content-wrapper">
-        <!-- <h2 class="post-title">{{news[index].title}}</h2>
-        <div class="post-content" ng-bind-html="news[6].info"></div> -->
-        <div ui-view></div>
+        <h2 class="post-title">Selected Article</h2>
+        <div class="post-meta">Article Meta Data</div>
+        <div class="post-content">Content</div>
       </div>
     </article>
-<!--     <div class="site-footer">Footer</div> -->
+    <div class="site-footer">Footer</div>
   </section>
 </div>
