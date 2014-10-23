@@ -3,7 +3,7 @@
 <div ui-view="map"></div>
 <div ui-view="featuredArticle"></div> -->
 
-<div class="site">
+<div class="site" ng-controller="MainCtrl">
 
 
   <header class="sidebar-header">
@@ -27,12 +27,8 @@
         </div>
       </a>
       <ul class="main-menu">
-        <li class="menu-item">
-          <a href="#">LINK</a>
-          <a href="#">LINK</a>
-          <a href="#">LINK</a>
-          <a href="#">LINK</a>
-          <a href="#">LINK</a>
+        <li class="menu-item" ng-repeat="article in news">
+          <a ui-sref="main({index: $index})">{{article.title}}</a>
         </li>
       </ul>
     </div>
@@ -48,9 +44,8 @@
       </div>
       <!-- <div ui-view="map"></div> -->
       <div class="content-wrapper">
-        <h2 class="post-title">Selected Article</h2>
-        <div class="post-meta">Article Meta Data</div>
-        <div class="post-content">Content</div>
+        <h2 class="post-title">{{news[index].title}}</h2>
+        <div class="post-content" ng-bind-html="news[6].info"></div>
       </div>
     </article>
     <div class="site-footer">Footer</div>
