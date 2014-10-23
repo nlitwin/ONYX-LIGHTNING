@@ -9,7 +9,8 @@
   MainCtrl.$inject = ['ResolvedThings', '$scope', 'MainFactory'];
 
   function MainCtrl(ResolvedThings, $scope, MainFactory) {
-    // console.log(ResolvedThings)
+    console.log(ResolvedThings);
+    console.log('fooo');
 
     var vm = this;
     vm.awesomeThings = ResolvedThings;
