@@ -7,13 +7,15 @@
     .controller('MapCtrl', function(){
 
         /* 
-         * d3 logic inserts map into <div id="map">
+         * Code below inserts a d3 map into <div id="map">
          * TODO: move d3 logic into separate file
          */
 
         d3.select(window).on("resize", throttle);
 
+        // Allow zooming
         var zoom = d3.behavior.zoom()
+            // scaleExtent allows zooming from size of image (1) to (9) times magnification
             .scaleExtent([1, 9])
             .on("zoom", move);
 
