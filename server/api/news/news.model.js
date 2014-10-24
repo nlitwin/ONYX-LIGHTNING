@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 var NewsSchema = new Schema({
   title: String,
   info: String,
-  location: String,
+  location: Array,
   url: {
     type: String,
     unique: true
