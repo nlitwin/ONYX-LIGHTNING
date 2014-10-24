@@ -1,3 +1,7 @@
+/*
+ * Stroke: border around country
+ */
+
 .country:hover{
   stroke: #fff;
   stroke-width: 1.5px;
@@ -27,7 +31,9 @@ div.tooltip {
   opacity: 0.9;
   position: absolute;
 }
-.graticule {
+
+/* Styles for Grid Lines: Not currently used; */
+/*.graticule {
   fill: none;
   stroke: #bbb;
   stroke-width: .5px;
@@ -36,4 +42,4 @@ div.tooltip {
 .equator {
   stroke: #ccc;
   stroke-width: 1px;
-}
+}*/
