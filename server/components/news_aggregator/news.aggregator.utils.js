@@ -1,3 +1,4 @@
+var _ = require('lodash');
 // Utility Functions for the news aggregator
 module.exports = {
 
@@ -5,6 +6,8 @@ module.exports = {
     var news = str;
     var countries = module.exports.countriesList;
     var countryMatchesArray = news.match(countries);
+    //ensure that the array has uniq locations and returns it
+    countryMatchesArray = _.uniq(countryMatchesArray);
     return countryMatchesArray; 
   },
 
