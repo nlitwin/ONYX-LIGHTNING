@@ -1,10 +1,22 @@
 ONYX-LIGHTNING
 ==============
+## Welcome
+Hello and welcome to ONYX NEWS. ONYX NEWS is the fastest news service, allowing users to become fully aware of world news in constant time. This service is best utilized by users who believe news is a necessary evil, which must be consumed in the most digestible format occupying the least amount of time.
 
-> "Essential, digestible world news selected for you."
+We welcome all users and contributers to actively voice your opinion about ONYX, as this service will only be as useful insofar as it can ease the pain it is to parse news sites or digest the information through the noise of Twitter.
+
+To begin using ONYX NEWS: simply log onto onyxnews@azurewebsites.net.
+
+To begin contributing to ONYX NEWS: siply read our Contributing.MD and our Style Guide followed by installing all dependencies and navigate to our CLIENT->APP->MAIN.js  where pseudocode will be guiding you through our application.
+
+Cheers and Thank you for being a part of ONYX NEWS!
+
+
+
+ "Essential, digestible world news selected for you."
 
 ## Table of Contents
-
+1.  [Welcome](#welcome)
 1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
@@ -47,3 +59,7 @@ View the project roadmap [here](https://github.com/ONYX-LIGHTNING/ONYX-LIGHTNING
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+=======
+
+ 
+

@@ -38,7 +38,7 @@ exports.fetchArticles = function(dbCallback) {
       while (item = stream.read()) {
         var newItem = {};
         newItem.title = item.title;
-        newItem.location = utils.getLocation();
+        newItem.location = utils.getLocation(item.summary);
         newItem.info = item.summary;
         newItem.url = item.link;
         dbCallback(newItem);
