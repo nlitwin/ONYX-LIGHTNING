@@ -5,6 +5,6 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/onyxlightning-test'
+    uri: 'mongodb://localhost/test-test'
   }
 };
