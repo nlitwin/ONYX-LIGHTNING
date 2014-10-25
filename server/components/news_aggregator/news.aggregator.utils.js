@@ -17,7 +17,7 @@ module.exports = {
         if (country.indexOf(" ") > -1) {
           var split = country.split(" ");
           var fullyCapitalized = '';
-          split.each(function(countryWord){
+          _.forEach(split, function(countryWord){
             fullyCapitalized += countryWord.slice(0,1).toUpperCase() + countryWord.slice(1).toLowerCase();
           });
           return fullyCapitalized;
