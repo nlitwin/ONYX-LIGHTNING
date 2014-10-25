@@ -36,7 +36,7 @@
 
       <ul class="main-menu" ng-class="{expanded: expandedSwitch}">
         <li class="menu-item" ng-repeat="article in news | limitTo: 15">
-          <a ui-sref=".article({index: $index})">{{article.title}}</a>
+          <a ng-controller="MapCtrl" ng-click="zoomToCountry()" ui-sref=".article({index: $index})">{{article.title}}</a>
         </li>
       </ul>
     </div>
@@ -47,8 +47,8 @@
   <section class="page-content primary">
     <article class="post">
       <!-- <div class="post-thumbnail">{{Country}}</div> -->
-      <div class="map">
-       ui view D3 map
+      <div class="map" ui-view="map">
+       
       </div>
       <!-- <div ui-view="map"></div> -->
       <div class="content-wrapper">
