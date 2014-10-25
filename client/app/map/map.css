@@ -6,6 +6,10 @@
   stroke: #fff;
   stroke-width: 1.5px;
 }
+.articleCountry{
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
 .text{
   font-size:10px;
   text-transform:capitalize;

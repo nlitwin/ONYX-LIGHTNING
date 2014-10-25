@@ -9,7 +9,7 @@ angular.module('onyxLightningApp')
           '': {
             templateUrl: 'app/main/main.html'
           },
-          'map': {
+          'map@main': {
             templateUrl: 'app/map/map.html',
             controller: 'MapCtrl'
           },

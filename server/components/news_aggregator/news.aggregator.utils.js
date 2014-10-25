@@ -3,19 +3,40 @@ var _ = require('lodash');
 module.exports = {
 
   getLocation : function(str) {
+    // TODO: Handle different names for countries:
+    // Russian Federation/Russia and Viet Nam/Vietnam, for example
     var news = str;
     var countries = module.exports.countriesList;
     var countryMatchesArray = news.match(countries);
-    //ensure that the array has uniq locations and returns it
-    countryMatchesArray = _.uniq(countryMatchesArray);
+
+    // Return country names with capitalized first letters
+    var formatted = countryMatchesArray.map(function(country){
+      // Log country for debugging purposes
+      // console.log(country, "COUNTRY");
+      if (country) {
+        if (country.indexOf(" ") > -1) {
+          var split = country.split(" ");
+          var fullyCapitalized = '';
+          split.each(function(countryWord){
+            fullyCapitalized += countryWord.slice(0,1).toUpperCase() + countryWord.slice(1).toLowerCase();
+          });
+          return fullyCapitalized;
+        } else {
+          return country.slice(0,1).toUpperCase() + country.slice(1).toLowerCase();
+        }
+      }
+    }); 
+
+    // Ensure that the array has no duplicates
+    countryMatchesArray = _.uniq(formatted);
     return countryMatchesArray; 
   },
 
   isValidUrl : function(str){
-    //The Angular version of URL Sanitize was borrowed for this REGEX. 
+    // The Angular version of URL Sanitize was borrowed for this REGEX. 
     var pattern = /((ftp|https?):\/\/|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"]/;  
+    // Check to see if the input is valid.
     if(!pattern.test(str)) {
-     //check to see if the input is valid.
       return false;
     } else {
       return true;
