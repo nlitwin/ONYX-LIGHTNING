@@ -2,6 +2,7 @@ var FeedParser = require('feedparser');
 var request = require('request');
 var apiMap = require('./news.source.config.js');
 var utils = require('./news.aggregator.utils.js');
+var sentiment = require('sentiment');
 
 exports.fetchArticles = function(dbCallback) {
 
@@ -41,6 +42,8 @@ exports.fetchArticles = function(dbCallback) {
         newItem.location = utils.getLocation(item.summary);
         newItem.info = item.summary;
         newItem.url = item.link;
+        newItem.sentiment = sentiment(newItem.info);
+        console.log(newItem.sentiment);
         dbCallback(newItem);
       }
     });
