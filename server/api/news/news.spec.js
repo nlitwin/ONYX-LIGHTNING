@@ -47,7 +47,7 @@ describe('GET /api/things', function() {
       .get('/api/news')
       .end(function(err, res) {
         if (err) return done(err);
-        res.body[0].location.should.be.instanceof(String);
+        res.body[0].location[0].should.be.instanceof(String);
         res.body.should.be.instanceof(Array);
         done();
       });
