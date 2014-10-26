@@ -7,6 +7,7 @@ var NewsSchema = new Schema({
   title: String,
   info: String,
   location: Array,
+  sentiment: Object,
   url: {
     type: String,
     unique: true
