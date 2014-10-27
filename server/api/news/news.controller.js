@@ -16,12 +16,22 @@ module.exports = {
   createArticle: createArticle,
   index: index,
   show: show,
-  destroy: destroy
+  destroy: destroy,
+  destroyAll: destroyAll
 };
 
 // Fill Database with Yahoo data
 
-newsAggregator.fetchArticles(createArticle);
+setInterval(function(){
+
+  destroyAll(function(){
+    
+    newsAggregator.fetchArticles(createArticle);
+    console.log("### New Articles Fetched");
+
+  });
+
+}, 1800000);
   
 // ############ Functions: ###################
 
@@ -73,3 +83,13 @@ function destroy(req, res) {
 function handleError(res, err) {
   return res.send(500, err);
 }
+
+function destroyAll(callback){
+  News.find(function(err, news){
+    _.forEach(news, function(newsItem){
+      newsItem.remove();
+    })
+    callback();
+  });
+}
+
