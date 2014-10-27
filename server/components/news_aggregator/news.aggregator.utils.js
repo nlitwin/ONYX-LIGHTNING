@@ -17,8 +17,9 @@ module.exports = {
         if (country.indexOf(" ") > -1) {
           var split = country.split(" ");
           var fullyCapitalized = '';
-          _.forEach(split, function(countryWord){
-            fullyCapitalized += countryWord.slice(0,1).toUpperCase() + countryWord.slice(1).toLowerCase();
+          _.forEach(split, function(countryWord, index){
+            var formattedWord = countryWord.slice(0,1).toUpperCase() + countryWord.slice(1).toLowerCase(); 
+            fullyCapitalized += (index === 0) ? formattedWord : " " + formattedWord;
           });
           return fullyCapitalized;
         } else {
