@@ -11,6 +11,10 @@ var NewsSchema = new Schema({
   url: {
     type: String,
     unique: true
+  },
+  date: { 
+    type: Date, 
+    default: Date.now 
   }
 });
 
