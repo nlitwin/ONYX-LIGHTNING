@@ -47,8 +47,7 @@ exports.fetchArticles = function(dbCallback) {
         newItem.location = utils.getLocation(item.summary);
         newItem.info = item.summary;
         newItem.url = item.link;
-        newItem.sentiment = sentiment(newItem.info);
-        console.log(newItem.sentiment);
+        newItem.sentiment = sentiment(newItem.info).score+"";
         dbCallback(newItem);
       }
     });
