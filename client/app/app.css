@@ -15,3 +15,12 @@
 	display: none;
 
 }
+
+
+/*Set '...' to article title's overflow*/
+.menu-item a {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 90%;
+  overflow: hidden;
+}
