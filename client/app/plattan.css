@@ -1250,8 +1250,9 @@ article.post {
   display: none; }
 
 article.post .content-wrapper {
-  max-width: 640px;
-  max-width: 40rem;
+  /*max-width: 640px;*/
+  /*max-width: 40rem;*/
+  max-width: 100%;
   margin-left: 5%;
   margin-right: 5%;
   position: relative; }
