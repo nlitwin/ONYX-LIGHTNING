@@ -12,7 +12,7 @@ angular.module('onyxLightningApp')
           'map@main': {
             templateUrl: 'app/map/map.html',
             controller: 'MapCtrl'
-          },
+          }
         },
         controller: 'MainCtrl'
       })
