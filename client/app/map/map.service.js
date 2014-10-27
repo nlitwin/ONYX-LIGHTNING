@@ -68,39 +68,76 @@
 
     // When user clicks an article, zoom to country on d3 map
     function zoomToCountry(isFirst) {
-      // When page loads, main.html's ng-repeat="article in news" calls zoomToCountry
-      // with a value of true for isFirst. This sets the top article as the default featured article.
-      // When a user clicks an article, it won't send an argument so isFirst === undefined.
 
       var sensitivity= this.article.sentiment
       if (parseFloat(sensitivity)>10) sensitivity='10';
       if (parseFloat(sensitivity)<-10) sensitivity='-10';      
       var sensitivityColor={'-10': '#800000','-9': '#B22222','-8': '#FF0000','-7': '#FF4500','-6': '#FF8C00','-5': '#FFA500','-4': '#FFFFE0 ','-3': '#FFD700','-2': '#FFFF00','-1': '#FFFFE0','0': '#FFFFFF','1': '#98FB98','2': '#ADFF2F','3': '#7FFF00','4': '#7CFC00','5': '#00FF00','6': '#32CD32','7': '#2E8B57','8': '#228B22','9': '#008000','10': '#006400', '20':'#006400'}
+
+      // When page loads, main.html's ng-repeat="article in news" calls zoomToCountry
+      // with a value of true for isFirst. This sets the top article as the default featured article.
+      // When a user clicks an article, it won't send an argument so isFirst === undefined.
       if (isFirst || isFirst === undefined) {
-      var name = this.article.location[0];
-      // Find article's country in d3 map#
-      // TO DO: highlight all countries, not just the first one in the array --> [0] 
-      var zoomedCountry = topo.filter(function(d) {return d.properties.name === name; })[0];
+        var names = this.article.location;
+        // Find article's country in d3 map#
+        // TO DO: highlight all countries, not just the first one in the array --> [0] 
+        var zoomedCountry = topo.filter(function(d) {return names.indexOf(d.properties.name) > -1; });
 
-      // Set border around country
-      d3.selectAll(".country").classed("articleCountry", false);
-      //Remove the country class from it so we can set the article Country class as its first class for color inheritance
-      d3.select("[title="+"'"+name+"'"+"]").classed("country", false);
-      //Add the articleCountry class to the featured article country
-      d3.select("[title="+"'"+name+"'"+"]").classed("articleCountry", true);
-      //Reset the country class in the featured country
-      d3.select("[title="+"'"+name+"'"+"]").classed("country", true);
-      //Reset the country to blue color if it is unfeatured
-      d3.selectAll(".country").style('fill', 'blue')
-      //Set the featured country to the color of its sensitivity based on the article score
-      d3.select("[title="+"'"+name+"'"+"]").style("fill", ''+sensitivityColor[sensitivity]);
+        // Remove border around country
+        d3.selectAll(".country").classed("articleCountry", false);
+        for (var k = 0; k < names.length; k++) {
+          //Remove the country class from it so we can set the article Country class as its first class for color inheritance
+          d3.select("[title="+"'"+names[k]+"'"+"]").classed("country", false);
+          //Add the articleCountry class to the featured article country
+          d3.select("[title="+"'"+names[k]+"'"+"]").classed("articleCountry", true);
+          //Reset the country class in the featured country
+          d3.select("[title="+"'"+names[k]+"'"+"]").classed("country", true);
+          //Reset the country to blue color if it is unfeatured
+          d3.selectAll(".country").style('fill', 'blue');
+          //Set the featured country to the color of its sensitivity based on the article score
+        }
+        for (var kk = 0; kk < names.length; kk++) {
+          d3.select("[title="+"'"+names[kk]+"'"+"]").style("fill", ''+sensitivityColor[sensitivity]);
+        }
 
-      // Get coordinates to zoom/transition
-      b = path.bounds(zoomedCountry);
-      g.transition().duration(1000).attr("transform",
-          "translate(" + projection.translate() + ")"
-          + "scale(" + Math.max(.30 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height), 1.5) + ")"
-          + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
+        if (zoomedCountry.length > 1) {
+          var bWidth, bHeight; 
+          var right = -Infinity;
+          var left = -Infinity;
+          var top = -Infinity;
+          var bottom = -Infinity;
+
+          zoomedCountry.forEach(function(zCountry){
+            var b = path.bounds(zCountry);
+            if (b[0][0] > left) {
+              left = b[0][0];
+            }
+            if (b[1][0] > right) {
+              right = b[1][0];
+            }
+            if (b[1][1] > top) {
+              top = b[1][1];
+            }
+            if (b[0][1] > bottom) {
+              bottom = b[0][1];
+            }
+          });
+          bWidth = right - left;
+          bHeight = top - bottom;
+
+          var scale = Math.max(.30 / Math.max(bWidth / width, bHeight / height), 1.5);
+          g.transition().duration(1000).attr("transform",
+            "translate(" + projection.translate() + ")"
+            + "scale(" + scale + ")"
+            + "translate(" + -(right + left) / 2 + "," + -(top + bottom) / 2 + ")");
+        } else {
+          // Get coordinates to zoom/transition
+          b = path.bounds(zoomedCountry[0]);
+          g.transition().duration(1000).attr("transform",
+              "translate(" + projection.translate() + ")"
+              + "scale(" + Math.max(.30 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height), 1.5) + ")"
+              + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
+        }  
       }
     }
 
@@ -155,13 +192,13 @@
     }
     /* REDRAW - Not currently used*/ 
     // Redraw entire map - triggered when resizing browser window
-    // function redraw() {
-    //   width = document.getElementById('map').offsetWidth;
-    //   height = 400;
-    //   d3.select('svg').remove();
-    //   setup(width,height);
-    //   draw(topo);
-    // }
+    function redraw() {
+      width = document.getElementById('map').offsetWidth;
+      height = 400;
+      d3.select('svg').remove();
+      setup(width,height);
+      draw(topo);
+    }
 
     // Called when zooming
     function move() {
@@ -197,7 +234,7 @@
     function throttle() {
       window.clearTimeout(throttleTimer);
         throttleTimer = window.setTimeout(function() {
-          // redraw();
+          redraw();
         }, 200);
     }
 
