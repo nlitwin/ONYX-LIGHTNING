@@ -21,6 +21,7 @@ module.exports = {
 };
 
 // Fill Database with Yahoo data
+newsAggregator.fetchArticles(createArticle);
 
 setInterval(function(){
 
