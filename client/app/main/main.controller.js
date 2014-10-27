@@ -6,10 +6,11 @@
     .module('onyxLightningApp')
     .controller('MainCtrl', MainCtrl);
 
-  MainCtrl.$inject = ['$scope', 'MainFactory', '$stateParams'];
+  MainCtrl.$inject = ['$scope', 'MainFactory', '$stateParams', '$state'];
 
-  function MainCtrl($scope, MainFactory, $stateParams) {
-    $scope.index = $stateParams.index | 0;
+  function MainCtrl($scope, MainFactory, $stateParams, $state) {
+    $state.go('main.article');
+    $scope.index = $stateParams.index || 0;
     $scope.expandedSwitch = false;
 
     MainFactory.get().

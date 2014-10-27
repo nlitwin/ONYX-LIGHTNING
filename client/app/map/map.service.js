@@ -65,7 +65,8 @@
     topo = countries;
     draw(topo);
 
-    function zoomToCountry() {
+    function zoomToCountry(isFirst) {
+      if (isFirst || isFirst === undefined) {
       var name = this.article.location[0];
       var zoomedCountry = topo.filter(function(d) {return d.properties.name === name; })[0];
 
@@ -77,6 +78,7 @@
           "translate(" + projection.translate() + ")"
           + "scale(" + .30 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height) + ")"
           + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
+      }
     }
 
     function draw(topo) {

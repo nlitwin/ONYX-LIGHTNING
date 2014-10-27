@@ -9,7 +9,7 @@
   ArticleCtrl.$inject = ['$scope', '$stateParams'];
 
   function ArticleCtrl($scope, $stateParams) {
-    $scope.index = $stateParams.index;
+    $scope.index = $stateParams.index || 0;
   }
 
 }).call(this);
