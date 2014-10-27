@@ -16,12 +16,16 @@ exports.fetchArticles = function(dbCallback) {
     var feedparser = new FeedParser();
 
     req.on('error', function (error) {
-      // handle any request errors
+      if (error) {
+        console.log(error);
+      }
     });
     req.on('response', function (res) {
       var stream = this;
 
-      if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+      if (res.statusCode != 200) {
+        return this.emit('error', new Error('Bad status code'));
+      }
 
       stream.pipe(feedparser);
     });
@@ -32,9 +36,10 @@ exports.fetchArticles = function(dbCallback) {
     });
     feedparser.on('readable', function() {
       // This is where the action is!
-      var stream = this
-        , meta = this.meta // **NOTE** the "meta" is always available in the context of the feedparser instance
-        , item;
+      var stream = this; 
+      // **NOTE** the "meta" is always available in the context of the feedparser instance
+      var meta = this.meta; 
+      var item;
 
       while (item = stream.read()) {
         var newItem = {};
