@@ -23,7 +23,11 @@ module.exports = {
           });
           return fullyCapitalized;
         } else {
-          return country.slice(0,1).toUpperCase() + country.slice(1).toLowerCase();
+          if (country === "US" || country === "EU") {
+            return country;
+          } else {
+            return country.slice(0,1).toUpperCase() + country.slice(1).toLowerCase();
+          }
         }
       }
     }); 
