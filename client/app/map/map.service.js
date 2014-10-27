@@ -73,6 +73,8 @@
       // When a user clicks an article, it won't send an argument so isFirst === undefined.
 
       var sensitivity= this.article.sentiment
+      if (parseFloat(sensitivity)>10) sensitivity='10';
+      if (parseFloat(sensitivity)<-10) sensitivity='-10';      
       var sensitivityColor={'-10': '#800000','-9': '#B22222','-8': '#FF0000','-7': '#FF4500','-6': '#FF8C00','-5': '#FFA500','-4': '#FFFFE0 ','-3': '#FFD700','-2': '#FFFF00','-1': '#FFFFE0','0': '#FFFFFF','1': '#98FB98','2': '#ADFF2F','3': '#7FFF00','4': '#7CFC00','5': '#00FF00','6': '#32CD32','7': '#2E8B57','8': '#228B22','9': '#008000','10': '#006400', '20':'#006400'}
       if (isFirst || isFirst === undefined) {
       var name = this.article.location[0];
@@ -91,7 +93,6 @@
       //Reset the country to blue color if it is unfeatured
       d3.selectAll(".country").style('fill', 'blue')
       //Set the featured country to the color of its sensitivity based on the article score
-      console.log(sensitivityColor[sensitivity])
       d3.select("[title="+"'"+name+"'"+"]").style("fill", ''+sensitivityColor[sensitivity]);
 
       // Get coordinates to zoom/transition
