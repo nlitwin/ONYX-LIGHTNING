@@ -14,7 +14,6 @@ var News = require('./news.model.js');
 
 module.exports = {
   createArticle: createArticle,
-  clearOldData: clearOldData,
   index: index,
   show: show,
   destroy: destroy
@@ -23,8 +22,7 @@ module.exports = {
 // Fill Database with Yahoo data
 
 newsAggregator.fetchArticles(createArticle);
-// clearOldData();
-
+  
 // ############ Functions: ###################
 
 // Create Unique article in DB (uniqueness is determined by the url)
@@ -40,23 +38,6 @@ function createArticle(newArticle) {
     }
   });
 }
-
-// Clear Old Data from the Collection
-function clearOldData(){
-  var cutoff = new Date();
-  //One Day:
-  // cutoff.setDate(cutoff.getDate()-1);
-
-  //One Minute:
-  cutoff.setTime(cutoff.getTime()-60000);
-
-  News.find({date: {$lt: cutoff}}, function (err, docs) {
-    // console.log(docs);
-    _.forEach(docs, function(doc){
-      console.log(doc.remove());
-    });
-  });
-};
 
 
 // Get list of things

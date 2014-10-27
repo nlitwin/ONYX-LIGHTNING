@@ -82,11 +82,15 @@
 
       // Set border around country
       d3.selectAll(".country").classed("articleCountry", false);
+      //Remove the country class from it so we can set the article Country class as its first class for color inheritance
       d3.select("[title="+name+"]").classed("country", false);
+      //Add the articleCountry class to the featured article country
       d3.select("[title="+name+"]").classed("articleCountry", true);
-      d3.select("[title="+name+"]").classed("country", false);
+      //Reset the country class in the featured country
       d3.select("[title="+name+"]").classed("country", true);
+      //Reset the country to blue color if it is unfeatured
       d3.selectAll(".country").style('fill', 'blue')
+      //Set the featured country to the color of its sensitivity based on the article score
       console.log(sensitivityColor[sensitivity])
       d3.select("[title="+name+"]").style("fill", ''+sensitivityColor[sensitivity]);
 
