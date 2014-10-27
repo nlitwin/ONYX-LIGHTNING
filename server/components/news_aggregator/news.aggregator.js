@@ -33,6 +33,9 @@ exports.fetchArticles = function(dbCallback) {
 
     feedparser.on('error', function(error) {
       // always handle errors
+      if (error) {
+        console.log(error);
+      }
     });
     feedparser.on('readable', function() {
       // This is where the action is!
