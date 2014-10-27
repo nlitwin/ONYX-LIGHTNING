@@ -12,5 +12,5 @@
   function MapCtrl($scope, MapFactory) {
     $scope.zoomToCountry = MapFactory.zoomToCountry;
   }
-
 }).call(this);
+
