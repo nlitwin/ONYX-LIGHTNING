@@ -79,15 +79,9 @@
       // When a user clicks an article, it won't send an argument so isFirst === undefined.
       if (isFirst || isFirst === undefined) {
         var names = this.article.location;
-        console.log("NAMES OF COUNTRIES IN ARTICLE: ", names);
         // Find article's country in d3 map#
         // TO DO: highlight all countries, not just the first one in the array --> [0] 
         var zoomedCountry = topo.filter(function(d) {return names.indexOf(d.properties.name) > -1; });
-        var temp = '';
-        zoomedCountry.forEach(function(zCountry){
-          temp += zCountry.properties.name + ',';
-        })
-        console.log("Countries found in d3: ", temp);
 
         // Remove border around country
         d3.selectAll(".country").classed("articleCountry", false);
@@ -139,10 +133,6 @@
         } else {
           // Get coordinates to zoom/transition
           b = path.bounds(zoomedCountry[0]);
-          console.log(b[1][0], "right");
-          console.log(b[0][0], "left");
-          console.log(b[1][1], "top");
-          console.log(b[0][1], "bottom");
           g.transition().duration(1000).attr("transform",
               "translate(" + projection.translate() + ")"
               + "scale(" + Math.max(.30 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height), 1.5) + ")"
