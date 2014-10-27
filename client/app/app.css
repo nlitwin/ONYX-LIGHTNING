@@ -21,6 +21,6 @@
 .menu-item a {
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 90%;
+  width: 100%;
   overflow: hidden;
 }
