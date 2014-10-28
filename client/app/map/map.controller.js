@@ -13,4 +13,3 @@
     $scope.zoomToCountry = MapFactory.zoomToCountry;
   }
 }).call(this);
-
