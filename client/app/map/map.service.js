@@ -199,9 +199,9 @@
     function redraw() {
       width = document.getElementById('map').offsetWidth;
       height = 400;
-      d3.select('svg').remove();
-      setup(width,height);
-      draw(topo);
+        // d3.select('svg').remove();
+        // setup(width,height);
+        // draw(topo);
     }
 
     // Called when zooming
