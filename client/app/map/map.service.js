@@ -69,10 +69,14 @@
     // When user clicks an article, zoom to country on d3 map
     function zoomToCountry(isFirst) {
 
-      var sensitivity= this.article.sentiment
-      if (parseFloat(sensitivity)>10) sensitivity='10';
-      if (parseFloat(sensitivity)<-10) sensitivity='-10';      
-      var sensitivityColor={'-10': '#800000','-9': '#B22222','-8': '#FF0000','-7': '#FF4500','-6': '#FF8C00','-5': '#FFA500','-4': '#FFFFE0 ','-3': '#FFD700','-2': '#FFFF00','-1': '#FFFFE0','0': '#FFFFFF','1': '#98FB98','2': '#ADFF2F','3': '#7FFF00','4': '#7CFC00','5': '#00FF00','6': '#32CD32','7': '#2E8B57','8': '#228B22','9': '#008000','10': '#006400', '20':'#006400'}
+      var sensitivity = this.article.sentiment;
+      if (parseFloat(sensitivity) > 10) {
+        sensitivity = '10';
+      }
+      if (parseFloat(sensitivity) < -10) {
+        sensitivity = '-10';
+      }
+      var sensitivityColor = {'-10': '#800000','-9': '#B22222','-8': '#FF0000','-7': '#FF4500','-6': '#FF8C00','-5': '#FFA500','-4': '#FFFFE0 ','-3': '#FFD700','-2': '#FFFF00','-1': '#FFFFE0','0': '#FFFFFF','1': '#98FB98','2': '#ADFF2F','3': '#7FFF00','4': '#7CFC00','5': '#00FF00','6': '#32CD32','7': '#2E8B57','8': '#228B22','9': '#008000','10': '#006400', '20':'#006400'};
 
       // When page loads, main.html's ng-repeat="article in news" calls zoomToCountry
       // with a value of true for isFirst. This sets the top article as the default featured article.
