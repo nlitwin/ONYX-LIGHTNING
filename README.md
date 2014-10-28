@@ -5,7 +5,7 @@ Hello and welcome to ONYX NEWS. ONYX NEWS is the fastest news service, allowing 
 
 We welcome all users and contributers to actively voice your opinion about ONYX, as this service will only be as useful insofar as it can ease the pain it is to parse news sites or digest the information through the noise of Twitter.
 
-To begin using ONYX NEWS: simply log onto onyxnews@azurewebsites.net.
+To begin using ONYX NEWS: simply visit https://sleepy-anchorage-2986.herokuapp.com/
 
 To begin contributing to ONYX NEWS: siply read our Contributing.MD and our Style Guide followed by installing all dependencies and navigate to our CLIENT->APP->MAIN.js  where pseudocode will be guiding you through our application.
 
