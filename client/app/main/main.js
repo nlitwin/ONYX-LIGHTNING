@@ -17,7 +17,7 @@ angular.module('onyxLightningApp')
         controller: 'MainCtrl'
       })
       .state('main.article', {
-        url: '/:index',
+        url: ':index',
         templateUrl: 'app/featuredArticle/featuredArticle.html',
         controller: 'ArticleCtrl'
       })
