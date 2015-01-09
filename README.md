@@ -1,14 +1,10 @@
 ONYX-LIGHTNING
 ==============
 ## Welcome
-Hello and welcome! Onyx News aims to provide users with fast, digestible world news. Our service is for those who find it hard to keep up on the latest news and would like control over what they see.
+Hello and welcome! Onyx News aims to provide users with fast, digestible world news. Check out how positive or negative the news is around the world.
 
-Simply log onto https://sleepy-anchorage-2986.herokuapp.com/ to get started with Onyx News!
+Navigate to http://onyxnews.herokuapp.com/ to get started!
 
-Cheers and Thank you for being a part of Onyx News!
-
-
- "Essential, digestible world news selected for you."
 
 ## Table of Contents
 1.  [Welcome](#welcome)
